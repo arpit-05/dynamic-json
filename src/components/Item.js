@@ -7,6 +7,12 @@ class Item extends React.Component
         super(props);
         console.log('dum',this.props.dummy);
     }
+    functionAction(act){
+        console.log(act,"act");
+        if(act==='Cancel')
+        return console.log("hello")
+
+    }
    
     renderText(text)
     {
@@ -28,15 +34,16 @@ class Item extends React.Component
     }
 
     renderActions(action){
+        const val3=action[0].confirm.dismiss_text
         if(action!=null){
-            console.log("action",action)
+            console.log("action",action[0].confirm.dismiss_text)
             const act=action.map((a)=>{
                 return(
                     
 
-                    <div className="App">
+                    <div >
                     
-                        <input type={a.type} value={a.text}  className="button"></input>
+                        <input type={a.type} value={a.text}  className="button" onClick={this.functionAction(val3)}></input>
                     </div>
                 )
             })
@@ -51,6 +58,7 @@ class Item extends React.Component
        {
            const val2=this.props.dummy[0].attachments[3].actions
         const val1=this.props.dummy[0].attachments[0].fields
+        
         const attchcomp=attachments.reduce(()=>{
                     console.log("attach",attachments[1].image_url)
                     console.log("actions",attachments[3])
@@ -69,7 +77,8 @@ class Item extends React.Component
                     <p>{attachments[2].text}</p>
                     <img src={attachments[2].image_url}></img>
                     <div><p>{this.renderActions(val2)}</p></div>
-                    <div><a href={attachments[3].footer_url}>{attachments[3].footer}</a></div>
+                    <br/>
+                    <div className="footer"><a href={attachments[3].footer_url}>{attachments[3].footer}</a></div>
                     </div>
                     
                     </div>
