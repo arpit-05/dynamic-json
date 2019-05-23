@@ -7,13 +7,14 @@ class Item extends React.Component
         super(props);
         console.log('dum',this.props.dummy);
     }
+   
     renderText(text)
     {
        if(text!=null){
            const txt=text.map((t)=>{
                
                return(
-                   <div className="App">
+                   <div>
                        <p>{t.title}</p>
                        <p>{t.value}</p>
                    </div>
@@ -25,34 +26,36 @@ class Item extends React.Component
         return <div ></div>;
       }
     }
+
+    renderActions(action){
+        if(action!=null){
+            console.log("action",action)
+            const act=action.map((a)=>{
+                return(
+                    
+
+                    <div className="App">
+                    
+                        <input type={a.type} value={a.text}  className="button"></input>
+                    </div>
+                )
+            })
+            return act
+        }
+        
+    }
     renderData(attachments){
         console.log("In render data")
-        // if(attachments!=null){ 
-        //     const attchcomp=attachments.find(attach=>{
-        //         console.log("attach",attachments[0].text)
-        //         return(<div> {attach.author_name}</div>)
-               
-            // return(
-            //     <div className="App">
-            //    <p>{attachments[0].author_name}</p> 
-            //    <p>{attachments[0].title}</p>
-               
-            //    <p>{attachments[0].text}</p> 
-            //     </div>
-            // )
-        // })
-        // return <div>{attchcomp}</div>}
-        // else {
-        //     return <div ></div>;
-        //   }
+       
        for(let i=0;i<1;i++)
        {
+           const val2=this.props.dummy[0].attachments[3].actions
         const val1=this.props.dummy[0].attachments[0].fields
         const attchcomp=attachments.reduce(()=>{
                     console.log("attach",attachments[1].image_url)
-                    
+                    console.log("actions",attachments[3])
                    
-                return(<div className="App">
+                return(<div>
                     <div >
                    <p>{attachments[i].author_name}</p> 
                    <p>{attachments[i].title}</p>
@@ -63,7 +66,10 @@ class Item extends React.Component
                     <div >
                     <p>{attachments[1].text}</p>
                     <img src={attachments[1].image_url}></img>
-                    
+                    <p>{attachments[2].text}</p>
+                    <img src={attachments[2].image_url}></img>
+                    <div><p>{this.renderActions(val2)}</p></div>
+                    <div><a href={attachments[3].footer_url}>{attachments[3].footer}</a></div>
                     </div>
                     
                     </div>
@@ -78,7 +84,7 @@ class Item extends React.Component
         const val=this.props.dummy[0].attachments
         //const val1=this.props.dummy[0].attachments[0].fields
        //console.log("val1",val1)
-        console.log("val",val)
+        console.log("val",val[2].text)
         if(val==null){
             return <div></div>
         }
@@ -87,7 +93,7 @@ class Item extends React.Component
         // }
         const data=this.props.dummy.map((d)=>{
             return(
-                <div className="App">{d.text}
+                <div>{d.text}
                 
                 </div>
 

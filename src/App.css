@@ -7,7 +7,12 @@
   height: 40vmin;
   pointer-events: none;
 }
-
+.button
+{
+   background: url("https://placeimg.com/100/100/any");
+   cursor:pointer;
+   border: none;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
